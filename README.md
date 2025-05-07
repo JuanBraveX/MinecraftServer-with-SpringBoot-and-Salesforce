@@ -1,6 +1,3 @@
-ChatGPT Plus
-¡Por supuesto! Aquí tienes un README.md estructurado y profesional para tu proyecto, que explica bien la idea y las tecnologías que usas:
-
 🎮 Minecraft + Spring Boot + Salesforce Integration
 Este proyecto es un experimento personal donde combino mis dos pasiones: los videojuegos y la programación. La meta es integrar eventos dentro de Minecraft con Salesforce, utilizando un backend en Java Spring Boot como puente entre ambas plataformas.
 
