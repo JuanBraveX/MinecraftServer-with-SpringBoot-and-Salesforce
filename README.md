@@ -1,65 +1,28 @@
-🎮 Minecraft + Spring Boot + Salesforce Integration
-Este proyecto es un experimento personal donde combino mis dos pasiones: los videojuegos y la programación. La meta es integrar eventos dentro de Minecraft con Salesforce, utilizando un backend en Java Spring Boot como puente entre ambas plataformas.
+# 🎮 Salesforce x Minecraft Integration 🚀
 
-Actualmente, el primer caso de uso funcional es:
-👉 Un botón dentro del juego que al ser presionado crea una cuenta en Salesforce usando el UUID único del jugador como llave externa.
+**Integración experimental** entre las dos cosas que más disfruto: **videojuegos** y **programación**.  
+Este proyecto conecta un servidor de Minecraft con Salesforce usando Java y Spring Boot.
 
-🚀 Arquitectura General
-csharp
-Copiar
-Editar
-[Jugador en Minecraft] 
-       ⬇️
-[Plugin Java en Minecraft Server] 
-       ⬇️
-[API REST en Java Spring Boot]
-       ⬇️
-[Salesforce (Apex REST Integration)]
-📦 Tecnologías Usadas
-🎮 Minecraft Server Plugin (Spigot / Bukkit API en Java)
+## 📚 Tecnologías Usadas
 
-☕ Java Spring Boot (Backend REST API)
+- 🎮 **Minecraft Server Plugin** (Spigot / PaperMC - Java)
+- ☕ **Spring Boot** (REST API)
+- 🌀 **Salesforce** (Apex REST Integrations)
 
-☁️ Salesforce (Integraciones vía Apex REST)
+---
 
-🔗 OkHttp (Cliente HTTP usado en el plugin para enviar las solicitudes)
+## 📊 Arquitectura
 
-✅ Funcionalidades actuales
- Captura eventos de interacción con botones en Minecraft.
+```mermaid
+sequenceDiagram
+    participant Jugador (Minecraft)
+    participant Plugin (Java)
+    participant API (Spring Boot)
+    participant Salesforce (Apex REST)
 
- Envía datos del jugador (incluyendo UUID) a Spring Boot vía HTTP POST.
-
- Spring Boot procesa la solicitud y realiza una integración hacia Salesforce.
-
- Inserta cuentas en Salesforce usando el UUID como External ID.
-
-🔧 Cómo funciona (Ejemplo paso a paso)
-El jugador hace clic derecho sobre un botón de piedra en Minecraft.
-
-El plugin detecta la acción y construye un JSON con datos del mundo y del jugador.
-
-Se envía una solicitud POST a un endpoint de Spring Boot.
-
-Spring Boot recibe la solicitud y ejecuta una llamada REST hacia Salesforce.
-
-Salesforce crea (o actualiza) una cuenta usando el UUID como llave externa.
-
-El jugador recibe un mensaje dentro del juego indicando el resultado de la operación.
-
-🌱 Planes futuros
-Agregar más acciones (actualización de oportunidades, leads, etc.).
-
-Sincronización en tiempo real de datos entre Salesforce y Minecraft.
-
-Uso de nombres personalizados en botones para diferentes acciones.
-
-Mejor manejo de errores y retroalimentación al jugador.
-
-⚠️ Notas
-Este proyecto es un pasatiempo personal y una prueba de concepto.
-
-Actualmente solo probado en entorno local con localhost y autenticaciones básicas.
-
-📄 Licencia
-Este proyecto es de uso personal y educativo. Si quieres inspirarte o colaborar, ¡bienvenido! 🚀
-
+    Jugador ->> Plugin: Click en botón (UUID)
+    Plugin ->> API: POST /api/realTime (datos del jugador)
+    API ->> Salesforce: POST /services/apexrest/Cuenta (con UUID)
+    Salesforce -->> API: Respuesta (Cuenta creada)
+    API -->> Plugin: Nueva hora del mundo (ejemplo)
+    Plugin -->> Jugador: Mensaje "Cuenta creada"
