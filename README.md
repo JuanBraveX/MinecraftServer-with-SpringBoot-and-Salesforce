@@ -15,11 +15,6 @@ Este proyecto conecta un servidor de Minecraft con Salesforce usando Java y Spri
 
 ```mermaid
 sequenceDiagram
-    participant Jugador (Minecraft)
-    participant Plugin (Java)
-    participant API (Spring Boot)
-    participant Salesforce (Apex REST)
-
     Jugador ->> Plugin: Click en botón (UUID)
     Plugin ->> API: POST /api/realTime (datos del jugador)
     API ->> Salesforce: POST /services/apexrest/Cuenta (con UUID)
