@@ -1,0 +1,10 @@
+name: MiPlugin
+version: 1.0
+main: com.minecraft.server.MiPlugin
+api-version: "1.20"
+
+commands:
+  api:
+    description: Hace una llamada POST a una API
+  Boton:
+    description: Hace el cambio de la hora
